@@ -7,17 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/simple_toolbar_border"
-    android:elevation="12dp"
+    android:elevation="14dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
-
-    <ImageButton
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@android:color/white"
-        android:src="@drawable/back_icon"
-        />
 
     <TextView
         android:id="@+id/simple_toolbar_title"

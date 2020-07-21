@@ -11,13 +11,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.e_doc)
-
+        simple_toolbar_title.text = "eDoc"
         var toolbar = findViewById<Toolbar>(R.id.e_doc_toolbar)
+        toolbar.setNavigationIcon(R.drawable.back_icon)
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        simple_toolbar_title.text = "edoc"
-        Log.d("option: ", "option menu")
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
