@@ -6,6 +6,8 @@ import android.os.Bundle
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.simple_toolbar))
+        setContentView(R.layout.e_doc)
+        supportActionBar?.title = "edoc"
     }
 }
