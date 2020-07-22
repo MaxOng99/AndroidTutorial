@@ -18,16 +18,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center">
 
-        <ImageButton
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/cancel_icon"
-            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Search"/>
+            android:text="Search"
+            android:textColor="@android:color/white"/>
 
 
 
