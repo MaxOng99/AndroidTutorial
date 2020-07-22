@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         R.id.action_search_user -> {
             var intent = Intent(this, SearchUiActivity::class.java)
             startActivity(intent)
-            Log.d("ok", "ok")
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             true
         }
@@ -42,5 +41,4 @@ class MainActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
-
 }
