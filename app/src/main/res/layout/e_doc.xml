@@ -19,13 +19,15 @@
         app:layout_constraintTop_toTopOf="parent">
     </include>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/e_doc_toolbar">
 
@@ -34,18 +36,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Business"
+            app:layout_constraintBottom_toBottomOf="@+id/horizontal_line"
             app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Policy Serving"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <SearchView
             android:id="@+id/searchView2"
@@ -59,18 +65,18 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/search_view_border"
             android:queryHint="@string/search_hint"
+            android:theme="@style/AppSearchView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            android:theme="@style/AppSearchView"
             app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="18dp"
             android:text="23"
             android:textColor="@color/red"
             android:textSize="24sp"
@@ -83,7 +89,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="18dp"
             android:enabled="false"
             android:text="18"
             android:textColor="@color/red"
@@ -116,7 +122,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <TextView
         android:id="@+id/pending_cases"
         android:layout_width="match_parent"
@@ -131,18 +136,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bar"
-        android:visibility="gone"/>
+        android:elevation="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/case_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        android:background="@color/background_color"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pending_cases"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/pending_cases" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -153,7 +159,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bar"
-        app:layout_constraintVertical_bias="0.39999998" />
+        app:layout_constraintVertical_bias="0.39999998"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -162,7 +169,8 @@
         android:text="No Results"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:visibility="gone"></TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

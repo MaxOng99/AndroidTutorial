@@ -7,9 +7,17 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.tutorial2.data.CasesDateSource
+import com.example.tutorial2.models.Case
+import kotlinx.android.synthetic.main.e_doc.*
 import kotlinx.android.synthetic.main.simple_toolbar.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CaseRecyclerAdaptor.OnCaseListener {
+
+    private lateinit var caseAdapter:CaseRecyclerAdaptor
+    private lateinit var cases:ArrayList<Case>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.e_doc)
@@ -19,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        initRecyclerView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -41,6 +51,22 @@ class MainActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+    private fun initRecyclerView() {
+        case_recycler_view.apply {
+            val topSpacingItemDecoration = SpacingItemDecoration(30)
+            var dataSource = CasesDateSource()
+            dataSource.populateData()
+            cases = dataSource.getCases()
+            addItemDecoration(topSpacingItemDecoration)
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            caseAdapter = CaseRecyclerAdaptor(cases, this@MainActivity)
+            adapter = caseAdapter
+        }
+    }
+
+    override fun onCaseClick(position: Int) {
+
     }
 
 }
