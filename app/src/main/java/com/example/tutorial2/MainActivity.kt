@@ -1,22 +1,27 @@
 package com.example.tutorial2
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.tutorial2.data.CasesDateSource
 import com.example.tutorial2.models.Case
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.custom_tab.*
 import kotlinx.android.synthetic.main.e_doc.*
 import kotlinx.android.synthetic.main.simple_toolbar.*
+import org.w3c.dom.Text
 
-class MainActivity : AppCompatActivity(), CaseRecyclerAdaptor.OnCaseListener {
-
-    private lateinit var caseAdapter:CaseRecyclerAdaptor
-    private lateinit var cases:ArrayList<Case>
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +33,7 @@ class MainActivity : AppCompatActivity(), CaseRecyclerAdaptor.OnCaseListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        initRecyclerView()
+        setUpViewPager()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,21 +57,52 @@ class MainActivity : AppCompatActivity(), CaseRecyclerAdaptor.OnCaseListener {
             super.onOptionsItemSelected(item)
         }
     }
-    private fun initRecyclerView() {
-        case_recycler_view.apply {
-            val topSpacingItemDecoration = SpacingItemDecoration(30)
-            var dataSource = CasesDateSource()
-            dataSource.populateData()
-            cases = dataSource.getCases()
-            addItemDecoration(topSpacingItemDecoration)
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            caseAdapter = CaseRecyclerAdaptor(cases, this@MainActivity)
-            adapter = caseAdapter
+
+    private fun setUpViewPager() {
+
+        var viewPager = findViewById<ViewPager2>(R.id.e_doc_view_pager)
+        var tabLayout = findViewById<TabLayout>(R.id.e_doc_tab_layout)
+        for (x in 0..tabLayout.tabCount) {
+            tabLayout.getTabAt(x)?.setCustomView(R.layout.custom_tab)
         }
+        val pageAdapter = EDocPageAdapter(this)
+        viewPager.adapter = pageAdapter
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                var value = tab?.customView?.findViewById<TextView>(R.id.value)
+                value?.setTextColor(Color.parseColor("#E53935"))
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                var value = tab?.customView?.findViewById<TextView>(R.id.value)
+                value?.setTextColor(Color.parseColor("#F39999"))
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                var value = tab?.customView?.findViewById<TextView>(R.id.value)
+                value?.setTextColor(Color.parseColor("#E53935"))
+
+            }
+        })
+
+        TabLayoutMediator(tabLayout, viewPager) {tab, position ->
+            tab.setCustomView(R.layout.custom_tab)
+            var value = tab.customView?.findViewById<TextView>(R.id.value)
+            var indicator = tab.customView?.findViewById<TextView>(R.id.indicator)
+
+            when (position) {
+                0 -> {
+                    value?.text = "23"
+                    indicator?.text = "New Business"
+                }
+                1 -> {
+                    value?.text = "18"
+                    indicator?.text = "Policy Serving"
+                }
+            }
+        }.attach()
     }
-
-    override fun onCaseClick(position: Int) {
-
-    }
-
 }
