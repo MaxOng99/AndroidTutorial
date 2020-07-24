@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tutorial2.models.Case
+import com.example.tutorial2.models.PolicyOwner
 import kotlinx.android.synthetic.main.case_card_view.view.*
 
-class CaseRecyclerAdaptor(private val dataSet: ArrayList<Case>, private val onCaseListener: OnCaseListener):
+class CaseRecyclerAdaptor(private val dataSet: ArrayList<PolicyOwner>, private val onCaseListener: OnCaseListener):
     RecyclerView.Adapter<CaseRecyclerAdaptor.CaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CaseViewHolder {
@@ -34,11 +34,11 @@ class CaseRecyclerAdaptor(private val dataSet: ArrayList<Case>, private val onCa
             itemView.setOnClickListener(this)
         }
 
-        fun bind(case: Case) {
-            itemView.name.text = case.name
-            itemView.ic_no_field.text = case.nricNo
-            itemView.policy_no_field.text = case.policyNo
-            itemView.process_field.text = case.process
+        fun bind(owner: PolicyOwner) {
+            itemView.name.text = owner.name
+            itemView.ic_no_field.text = owner.nricNo
+            itemView.policy_no_field.text = owner.policyNo
+            itemView.process_field.text = owner.process
         }
 
         override fun onClick(p0: View?) {

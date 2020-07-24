@@ -1,22 +1,22 @@
 package com.example.tutorial2.data
 
-import com.example.tutorial2.models.Case
+import com.example.tutorial2.models.PolicyOwner
 
 class CasesDateSource {
 
-    private var cases: ArrayList<Case> = ArrayList()
+    private var policyOwners: ArrayList<PolicyOwner> = ArrayList()
 
     private fun addCases(name:String, nricNo:String, policyNo:String, agent:String, process:String) {
-        val case = Case(name, nricNo, policyNo, agent, process)
-        cases.add(case)
+        val owner = PolicyOwner(name, nricNo, policyNo, agent, process)
+        policyOwners.add(owner)
     }
 
-    fun removeDeveloper(case: Case) {
-        cases.remove(case)
+    fun removeCase(case: PolicyOwner) {
+        policyOwners.remove(case)
     }
 
-    fun getCases(): ArrayList<Case>{
-        return cases
+    fun getCases(): ArrayList<PolicyOwner>{
+        return policyOwners
     }
 
     fun populateData() {

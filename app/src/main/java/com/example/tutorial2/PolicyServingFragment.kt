@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tutorial2.data.CasesDateSource
-import com.example.tutorial2.models.Case
+import com.example.tutorial2.models.PolicyOwner
 import kotlinx.android.synthetic.main.e_doc_fragment.*
 
 class PolicyServingFragment : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
 
     private lateinit var caseAdapter:CaseRecyclerAdaptor
-    private lateinit var cases:ArrayList<Case>
+    private lateinit var cases:ArrayList<PolicyOwner>
 
     override fun onCreateView (
         inflater: LayoutInflater,
