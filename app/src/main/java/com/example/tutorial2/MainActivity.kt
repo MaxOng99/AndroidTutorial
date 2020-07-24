@@ -7,22 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.tutorial2.data.CasesDateSource
-import com.example.tutorial2.models.Case
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.custom_tab.*
-import kotlinx.android.synthetic.main.e_doc.*
 import kotlinx.android.synthetic.main.simple_toolbar.*
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.e_doc)
@@ -46,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         R.id.action_search_user -> {
             var intent = Intent(this, SearchUiActivity::class.java)
             startActivity(intent)
-            Log.d("ok", "ok")
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             true
         }
