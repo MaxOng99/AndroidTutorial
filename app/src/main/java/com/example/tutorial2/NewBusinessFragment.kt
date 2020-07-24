@@ -1,5 +1,6 @@
 package com.example.tutorial2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,8 @@ class NewBusinessFragment : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
     }
 
     override fun onCaseClick(position: Int) {
-
+        val intent = Intent(activity, CaseUiActivity::class.java)
+        startActivity(intent)
     }
 
 }
