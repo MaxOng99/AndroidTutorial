@@ -65,6 +65,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/assured_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -130,6 +131,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/owner_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

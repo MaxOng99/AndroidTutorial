@@ -44,8 +44,7 @@ class NewBusinessFragment : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
 
     override fun onCaseClick(position: Int) {
         val intent = Intent(activity, CaseUiActivity::class.java)
-        val policyOwner = cases.get(position)
-        val assuredList = policyOwner.getAssuredList()
+        val policyOwner = cases[position]
         intent.putExtra("selected_policy_owner", policyOwner)
         startActivity(intent)
     }

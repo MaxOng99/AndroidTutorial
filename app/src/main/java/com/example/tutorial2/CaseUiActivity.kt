@@ -7,10 +7,12 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tutorial2.models.PolicyOwner
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.case_ui.*
+import kotlinx.android.synthetic.main.simple_toolbar.*
 
 class CaseUiActivity : AppCompatActivity() {
 
-    private lateinit var selectedPolicyOwner:PolicyOwner
+    private var selectedPolicyOwner:PolicyOwner? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,10 @@ class CaseUiActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        selectedPolicyOwner = intent?.getParcelableExtra("selected_policy_owner")
+        name.text = selectedPolicyOwner?.name
+        simple_toolbar_title.text = selectedPolicyOwner?.policyNo
         setUpViewPager()
     }
 
