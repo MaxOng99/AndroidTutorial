@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorial2.models.LifeAssured
 import kotlinx.android.synthetic.main.form.view.*
 import kotlinx.android.synthetic.main.life_assured_recycler_view_item.view.*
+import kotlinx.android.synthetic.main.scan_doc.view.*
 
 class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
                                  private val onLifeAssuredListener: OnLifeAssuredListener):
@@ -49,10 +51,8 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
             itemView.setOnClickListener(this)
         }
 
-        private lateinit var firstAssuredView:View
         private val toggleDetailsBtn = itemView.collapse_button
         private val assuredListContainer = itemView.assured_list
-        private var assuredListHeight = assuredListContainer.height
 
         @SuppressLint("SetTextI18n")
         @RequiresApi(LOLLIPOP)
@@ -79,6 +79,10 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
                     formView.description.text = form.description
                     formView.file_size.text = form.fileSize
                     formView.page.text = form.page
+                    formView.action_button.setOnClickListener {
+                        val parent = itemView.parent.parent as ConstraintLayout
+                        parent.info_message_container.visibility = View.VISIBLE
+                    }
 
                     formView.id = View.generateViewId()
                     parentLayout.addView(formView, 0)
@@ -95,7 +99,6 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
                     formView.more_description.text = "\n".plus("more >")
 
                     formView.more_description.setOnClickListener {
-                        var newText = ""
 
                         if (formView.more_description.text.contains("less <")) {
                             formView.description.maxLines = 2
