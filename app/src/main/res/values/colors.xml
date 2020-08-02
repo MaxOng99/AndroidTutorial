@@ -7,4 +7,7 @@
     <color name="lightGrey">#eeeeee</color>
     <color name="background_color">#e0e0e0</color>
     <color name="disabled_red">#F39999</color>
+    <color name="very_dark_blue">#0b2348</color>
+    <color name="header_color">#0d0e15</color>
+    <color name="status">#ff7814</color>
 </resources>

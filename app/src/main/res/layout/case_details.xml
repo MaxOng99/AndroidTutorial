@@ -37,6 +37,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="12dp"
                 android:text="Deposit Withdrawal"
+                android:textColor="@color/very_dark_blue"
                 android:textSize="18sp"
                 android:textStyle="bold">
 
@@ -71,6 +72,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="12dp"
                 android:text="Teh Wai Kong"
+                android:textColor="@color/very_dark_blue"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Teh Wai Kong">
@@ -104,6 +106,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="12dp"
                 android:text="801203-14-8879"
+                android:textColor="@color/very_dark_blue"
                 android:textSize="18sp"
                 android:textStyle="bold">
 
@@ -137,6 +140,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="12dp"
                 android:text="Teh Wai Kong"
+                android:textColor="@color/very_dark_blue"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Teh Wai Kong">
@@ -168,6 +172,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="12dp"
                 android:text="801203-14-8879"
+                android:textColor="@color/very_dark_blue"
                 android:textSize="18sp"
                 android:textStyle="bold">
 

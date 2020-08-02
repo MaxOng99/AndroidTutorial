@@ -1,27 +1,15 @@
 package com.example.tutorial2
-
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Build.VERSION_CODES.LOLLIPOP
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.annotation.VisibleForTesting
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.marginTop
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorial2.models.LifeAssured
 import kotlinx.android.synthetic.main.form.view.*
 import kotlinx.android.synthetic.main.life_assured_recycler_view_item.view.*
-import kotlinx.android.synthetic.main.scan_doc.view.*
 
 class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
                                  private val onLifeAssuredListener: OnLifeAssuredListener):

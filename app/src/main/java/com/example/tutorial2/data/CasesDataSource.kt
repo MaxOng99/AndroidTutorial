@@ -1,9 +1,8 @@
 package com.example.tutorial2.data
 
-import com.example.tutorial2.models.LifeAssured
 import com.example.tutorial2.models.PolicyOwner
 
-class CasesDateSource {
+class CasesDataSource {
 
     private var policyOwners: ArrayList<PolicyOwner> = ArrayList()
 

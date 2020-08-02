@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
+import com.example.tutorial2.data.CasesDataSource
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.simple_toolbar.*
@@ -54,9 +55,11 @@ class MainActivity : AppCompatActivity(){
         var viewPager = findViewById<ViewPager2>(R.id.e_doc_view_pager)
         var tabLayout = findViewById<TabLayout>(R.id.e_doc_tab_layout)
         for (x in 0..tabLayout.tabCount) {
-            tabLayout.getTabAt(x)?.setCustomView(R.layout.custom_tab)
+            tabLayout.getTabAt(x)?.setCustomView(R.layout.e_doc_tab_layout)
         }
-        val pageAdapter = EDocPageAdapter(this)
+        val dataSource = CasesDataSource()
+        dataSource.populateData()
+        val pageAdapter = EDocPageAdapter(this, dataSource)
         viewPager.adapter = pageAdapter
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -80,17 +83,18 @@ class MainActivity : AppCompatActivity(){
         })
 
         TabLayoutMediator(tabLayout, viewPager) {tab, position ->
-            tab.setCustomView(R.layout.custom_tab)
+            tab.setCustomView(R.layout.e_doc_tab_layout)
             var value = tab.customView?.findViewById<TextView>(R.id.value)
             var indicator = tab.customView?.findViewById<TextView>(R.id.indicator)
 
             when (position) {
                 0 -> {
-                    value?.text = "23"
+                    value?.text = dataSource.getCases().size.toString()
                     indicator?.text = "New Business"
+
                 }
                 1 -> {
-                    value?.text = "18"
+                    value?.text = dataSource.getCases().size.toString()
                     indicator?.text = "Policy Serving"
                 }
             }

@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tutorial2.data.CasesDateSource
+import com.example.tutorial2.data.CasesDataSource
 import com.example.tutorial2.models.PolicyOwner
 import kotlinx.android.synthetic.main.e_doc_fragment.*
 
-class NewBusinessFragment : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
+class NewBusinessFragment(private val data:CasesDataSource) : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
 
     private lateinit var caseAdapter:CaseRecyclerAdaptor
     private lateinit var cases:ArrayList<PolicyOwner>
@@ -32,13 +32,13 @@ class NewBusinessFragment : Fragment(), CaseRecyclerAdaptor.OnCaseListener{
     private fun initRecyclerView() {
         case_recycler_view.apply {
             val topSpacingItemDecoration = SpacingItemDecoration(30)
-            var dataSource = CasesDateSource()
-            dataSource.populateData()
+            var dataSource = data
             cases = dataSource.getCases()
             addItemDecoration(topSpacingItemDecoration)
             layoutManager = LinearLayoutManager(activity)
             caseAdapter = CaseRecyclerAdaptor(cases, this@NewBusinessFragment)
             adapter = caseAdapter
+            pending_cases.text = "Showing ${cases.size} pending case(s)"
         }
     }
 

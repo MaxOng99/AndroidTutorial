@@ -1,6 +1,8 @@
 package com.example.tutorial2
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
@@ -37,10 +39,17 @@ class CaseUiActivity : AppCompatActivity() {
         var tabLayout = findViewById<TabLayout>(R.id.tab_layout)
 
         TabLayoutMediator(tabLayout, viewPager) {tab, position ->
+
             when (position) {
-                0 -> tab.text = "Case Details"
-                1 -> tab.text = "Scan Doc"
-                else -> tab.text = "Info"
+                0 -> {
+                    tab.text = "Case Details"
+                }
+                1 -> {
+                    tab.text = "Scan Doc"
+                }
+                else -> {
+                    tab.text = "Info"
+                }
             }
         }.attach()
     }

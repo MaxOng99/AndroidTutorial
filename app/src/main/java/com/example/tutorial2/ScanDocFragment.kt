@@ -1,6 +1,5 @@
 package com.example.tutorial2
 
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +37,7 @@ class ScanDocFragment : Fragment(), LifeAssuredRecyclerAdapter.OnLifeAssuredList
             lifeAssuredRecyclerAdapter = LifeAssuredRecyclerAdapter(assureds, this@ScanDocFragment)
             adapter = lifeAssuredRecyclerAdapter
         }
+
     }
 
     override fun onLifeAssuredClick(position: Int) {
