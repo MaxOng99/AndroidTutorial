@@ -63,5 +63,46 @@ class CasesDataSource {
                 "12 pg.",
                 "Success")
         }
+
+        val owner = addCases("martin", "990728-10-9999", "TL2073123109", "Joseph", "Non-Financial Alteration")
+        val assured1 = owner.addAssured("Doge")
+        val assured2 = owner.addAssured("Cate")
+
+        assured1.addForm("HLA Blood Profile 3 - Lipids Profile",
+            "Lorem ipsum dolor sit amet" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            "22 Oct 2018",
+            "1.2 MB",
+            "12 pg.",
+            "Camera")
+        assured1.addForm("HLA Blood Profile 3 - Lipids Profile",
+            "Lorem ipsum dolor sit amet" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            "22 Oct 2018",
+            "1.2 MB",
+            "12 pg.",
+            "Uploaded")
+        assured2.addForm("HLA Blood Profile 3 - Lipids Profile",
+            "Lorem ipsum dolor sit amet" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            "22 Oct 2018",
+            "1.2 MB",
+            "12 pg.",
+            "Important")
+        assured2.addForm("HLA Blood Profile 3 - Lipids Profile",
+            "Lorem ipsum dolor sit amet" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "HLA Blood Profile 3 - Lipids Profile" +
+                    "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+            "22 Oct 2018",
+            "1.2 MB",
+            "12 pg.",
+            "Success")
     }
 }

@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(){
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
         setUpViewPager()
     }
 
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity(){
         }
         val dataSource = CasesDataSource()
         dataSource.populateData()
-        val pageAdapter = EDocPageAdapter(this, dataSource)
+        val pageAdapter = EDocPageAdapter(this, dataSource, findViewById(R.id.e_doc_search_view))
         viewPager.adapter = pageAdapter
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

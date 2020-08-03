@@ -3,6 +3,8 @@ package com.example.tutorial2
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorial2.models.PolicyOwner
 import kotlinx.android.synthetic.main.case_card_view.view.*

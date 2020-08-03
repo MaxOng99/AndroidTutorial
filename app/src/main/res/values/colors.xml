@@ -14,4 +14,5 @@
     <color name="selected_snack_bar">#F0F0F0</color>
     <color name="very_dark_grey">#757678</color>
     <color name="success_green">#1DB440</color>
+    <color name="white">#FFFFFF</color>
 </resources>
