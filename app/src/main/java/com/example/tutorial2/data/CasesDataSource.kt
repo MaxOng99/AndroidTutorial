@@ -43,7 +43,7 @@ class CasesDataSource {
                 "22 Oct 2018",
                 "1.2 MB",
                 "12 pg.",
-                "Camera")
+                "Uploaded")
             assured2.addForm("HLA Blood Profile 3 - Lipids Profile",
                 "Lorem ipsum dolor sit amet" +
                         "HLA Blood Profile 3 - Lipids Profile" +
@@ -52,7 +52,7 @@ class CasesDataSource {
                 "22 Oct 2018",
                 "1.2 MB",
                 "12 pg.",
-                "Camera")
+                "Important")
             assured2.addForm("HLA Blood Profile 3 - Lipids Profile",
                 "Lorem ipsum dolor sit amet" +
                            "HLA Blood Profile 3 - Lipids Profile" +
@@ -61,7 +61,7 @@ class CasesDataSource {
                 "22 Oct 2018",
                 "1.2 MB",
                 "12 pg.",
-                "Camera")
+                "Success")
         }
     }
 }

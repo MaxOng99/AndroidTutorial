@@ -2,6 +2,7 @@ package com.example.tutorial2.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.text.Normalizer
 
 class LifeAssured(
     var name: String?,
@@ -30,6 +31,10 @@ class LifeAssured(
 
     fun getFormList():ArrayList<PolicyForm>? {
         return forms
+    }
+
+    fun getForm(position:Int): PolicyForm? {
+        return forms?.get(position)
     }
 
     companion object CREATOR : Parcelable.Creator<LifeAssured> {

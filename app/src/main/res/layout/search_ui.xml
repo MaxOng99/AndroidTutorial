@@ -46,7 +46,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/AppSearchView">
+            android:theme="@style/AppSearchView"
+            android:iconifiedByDefault="false">
 
         </SearchView>
     </androidx.constraintlayout.widget.ConstraintLayout>

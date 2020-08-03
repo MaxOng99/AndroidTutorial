@@ -1,5 +1,7 @@
 package com.example.tutorial2
 
+import android.view.View
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.*
 import androidx.viewpager2.adapter.FragmentStateAdapter
 

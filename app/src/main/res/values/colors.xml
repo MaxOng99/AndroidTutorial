@@ -10,4 +10,8 @@
     <color name="very_dark_blue">#0b2348</color>
     <color name="header_color">#0d0e15</color>
     <color name="status">#ff7814</color>
+    <color name="disabled_card_view_color">#EBEBEB</color>
+    <color name="selected_snack_bar">#F0F0F0</color>
+    <color name="very_dark_grey">#757678</color>
+    <color name="success_green">#1DB440</color>
 </resources>

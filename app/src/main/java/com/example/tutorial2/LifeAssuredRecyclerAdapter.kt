@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,11 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
     RecyclerView.Adapter<LifeAssuredRecyclerAdapter.LifeAssuredViewHolder>() {
 
     private lateinit var inflater: LayoutInflater
+    var submitButtonClicked = false
+
+    fun notifySubmitButtonClicked(state:Boolean) {
+        submitButtonClicked = state
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LifeAssuredViewHolder {
         inflater = LayoutInflater.from(parent.context)
@@ -41,7 +47,7 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
         }
     }
 
-    class LifeAssuredViewHolder(itemView: View,
+    inner class LifeAssuredViewHolder(itemView: View,
                                 private val inflater: LayoutInflater,
                                 private val onLifeAssuredListener: OnLifeAssuredListener,
                                 private val dataSet: ArrayList<LifeAssured>?)
@@ -73,19 +79,38 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
             if (list != null) {
                 for (form in list) {
 
-                    val formView = inflater.inflate(R.layout.form, null)
+                    val formView = inflater.inflate(R.layout.form, null) as CardView
                     formView.form_title.text = form.title
                     formView.date.text = form.date
                     formView.description.text = form.description
                     formView.file_size.text = form.fileSize
                     formView.page.text = form.page
+
+                    when (form.action) {
+                        "Camera" -> formView.action_button.setImageResource(R.drawable.camera_icon)
+                        "Uploaded" -> formView.action_button.setImageResource(R.drawable.upload_icon)
+                        "Important" -> formView.action_button.setImageResource(R.drawable.important_mark_icon)
+                        "Success" -> formView.action_button.setImageResource(R.drawable.success_icon)
+                    }
+
                     formView.action_button.setOnClickListener {
                         val parent = itemView.parent.parent as ConstraintLayout
-                        parent.info_message_container.visibility = View.VISIBLE
+                        if (form.action.equals("Camera")) {
+                            parent.info_message_container.visibility = View.VISIBLE
+                        }
+                    }
+
+                    formView.setOnClickListener {
+
+                        if (submitButtonClicked) {
+                            formView.setBackgroundResource(R.drawable.card_view_selected_background)
+                            val scanDocFragment = onLifeAssuredListener as ScanDocFragment
+                            scanDocFragment.notifyFormSelected()
+                        }
                     }
 
                     formView.id = View.generateViewId()
-                    parentLayout.addView(formView, 0)
+                    parentLayout.addView(formView, list.indexOf(form))
                     constraintSet.clone(parentLayout)
 
                     constraintSet.connect(formView.id, ConstraintSet.TOP, currentTopConstraintView.id, ConstraintSet.BOTTOM,24)
@@ -114,7 +139,7 @@ class LifeAssuredRecyclerAdapter(private val dataSet: ArrayList<LifeAssured>?,
                 val dummyFormView = inflater.inflate(R.layout.dummy_view, null)
                 dummyFormView.id = View.generateViewId()
                 dummyFormView.layoutParams = ViewGroup.LayoutParams(0,1)
-                parentLayout.addView(dummyFormView, 0)
+                parentLayout.addView(dummyFormView, list.size)
                 constraintSet.clone(parentLayout)
 
                 constraintSet.connect(dummyFormView.id, ConstraintSet.TOP, currentTopConstraintView.id, ConstraintSet.BOTTOM,24)
