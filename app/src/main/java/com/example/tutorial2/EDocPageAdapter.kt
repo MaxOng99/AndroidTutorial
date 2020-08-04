@@ -3,9 +3,9 @@ package com.example.tutorial2
 import android.widget.SearchView
 import androidx.fragment.app.*
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.tutorial2.data.CasesDataSource
+import com.example.tutorial2.models.PolicyOwner
 
-class EDocPageAdapter(fa: FragmentActivity, private val data:CasesDataSource, private val searchView: SearchView) : FragmentStateAdapter(fa) {
+class EDocPageAdapter(fa: FragmentActivity, private val data: ArrayList<PolicyOwner>?, private val searchView: SearchView) : FragmentStateAdapter(fa) {
 
     private val numOfTabs = 2
     override fun getItemCount(): Int {
@@ -14,8 +14,8 @@ class EDocPageAdapter(fa: FragmentActivity, private val data:CasesDataSource, pr
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> NewBusinessFragment(data, searchView)
-            else -> PolicyServingFragment(data, searchView)
+            0 -> NewBusinessFragment(ArrayList(data), searchView)
+            else -> PolicyServingFragment(ArrayList(data), searchView)
         }
     }
 }

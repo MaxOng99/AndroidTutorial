@@ -4,39 +4,46 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
 import com.example.tutorial2.data.CasesDataSource
+import com.example.tutorial2.models.PolicyOwner
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.simple_toolbar.*
 
 class MainActivity : AppCompatActivity(){
+
+    private val dataSource = CasesDataSource()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.e_doc)
-        simple_toolbar_title.text = "eDoc"
         var toolbar = findViewById<Toolbar>(R.id.e_doc_toolbar)
         toolbar.setNavigationIcon(R.drawable.back_icon)
+        simple_toolbar_title.text = "eDoc"
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setUpViewPager()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        Log.d("option: ", "option menu")
-        menuInflater.inflate(R.menu.menu_resource, menu)
+        menuInflater.inflate(R.menu.menu_resource,menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+
         R.id.action_search_user -> {
             var intent = Intent(this, SearchUiActivity::class.java)
+            intent.putExtra("data_source", dataSource.getCases())
+            intent.putExtra("agents", dataSource.getAgents())
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
             true
@@ -50,16 +57,12 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun setUpViewPager() {
-
         var viewPager = findViewById<ViewPager2>(R.id.e_doc_view_pager)
         var tabLayout = findViewById<TabLayout>(R.id.e_doc_tab_layout)
+
         for (x in 0..tabLayout.tabCount) {
             tabLayout.getTabAt(x)?.setCustomView(R.layout.e_doc_tab_layout)
         }
-        val dataSource = CasesDataSource()
-        dataSource.populateData()
-        val pageAdapter = EDocPageAdapter(this, dataSource, findViewById(R.id.e_doc_search_view))
-        viewPager.adapter = pageAdapter
 
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
@@ -81,6 +84,14 @@ class MainActivity : AppCompatActivity(){
             }
         })
 
+        var caseList:ArrayList<PolicyOwner>? = null
+        dataSource.populateAgent()
+        dataSource.populateData()
+        caseList = dataSource.getCases()
+
+        val pageAdapter = EDocPageAdapter(this, caseList, findViewById(R.id.e_doc_search_view))
+        viewPager.adapter = pageAdapter
+
         TabLayoutMediator(tabLayout, viewPager) {tab, position ->
             tab.setCustomView(R.layout.e_doc_tab_layout)
             var value = tab.customView?.findViewById<TextView>(R.id.value)
@@ -88,12 +99,12 @@ class MainActivity : AppCompatActivity(){
 
             when (position) {
                 0 -> {
-                    value?.text = dataSource.getCases().size.toString()
+                    value?.text = caseList?.size.toString()
                     indicator?.text = "New Business"
 
                 }
                 1 -> {
-                    value?.text = dataSource.getCases().size.toString()
+                    value?.text = caseList?.size.toString()
                     indicator?.text = "Policy Serving"
                 }
             }

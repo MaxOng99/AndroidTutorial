@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tutorial2.data.CasesDataSource
 import com.example.tutorial2.models.PolicyOwner
 import kotlinx.android.synthetic.main.e_doc_fragment.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewBusinessFragment(private val data:CasesDataSource, private val searchView: SearchView) : Fragment(), CaseRecyclerAdaptor.OnCaseListener {
+class NewBusinessFragment(private val data: ArrayList<PolicyOwner>?, private val searchView: SearchView) : Fragment(), CaseRecyclerAdaptor.OnCaseListener {
 
     private lateinit var caseAdapter: CaseRecyclerAdaptor
     private lateinit var cases: ArrayList<PolicyOwner>
@@ -58,26 +57,59 @@ class NewBusinessFragment(private val data:CasesDataSource, private val searchVi
                             filteredCases.add(owner)
                         }
                     }
+
+                    when (filteredCases.size) {
+                        0 -> {
+                            no_result_image.visibility = View.VISIBLE
+                            no_result_text.visibility = View.VISIBLE
+                            case_recycler_view.visibility = View.GONE
+                            pending_cases.visibility = View.GONE
+                        }
+                        else -> {
+                            no_result_text.visibility = View.GONE
+                            no_result_image.visibility = View.GONE
+                            case_recycler_view.visibility = View.VISIBLE
+                            pending_cases.visibility = View.VISIBLE
+                        }
+                    }
+
                     caseAdapter.notifyDataSetChanged()
-                    pending_cases.text = "Showing ${filteredCases.size} pending case(s)"
+                    pending_cases.text = "Showing ${filteredCases.size.toString()} pending case(s)"
                 }
 
                 else{
                     filteredCases.clear()
                     filteredCases.addAll(cases)
+
+                    when (filteredCases.size) {
+                        0 -> {
+                            no_result_image.visibility = View.VISIBLE
+                            no_result_text.visibility = View.VISIBLE
+                            case_recycler_view.visibility = View.GONE
+                            pending_cases.visibility = View.GONE
+                        }
+                        else -> {
+                            no_result_text.visibility = View.GONE
+                            no_result_image.visibility = View.GONE
+                            case_recycler_view.visibility = View.VISIBLE
+                            pending_cases.visibility = View.VISIBLE
+                        }
+                    }
+
                     caseAdapter.notifyDataSetChanged()
-                    pending_cases.text = "Showing ${filteredCases.size} pending case(s)"
+                    pending_cases.text = "Showing ${filteredCases.size.toString()} pending case(s)"
                 }
                 return true
             }
+
         })
     }
-
     private fun initRecyclerView() {
         case_recycler_view.apply {
             val topSpacingItemDecoration = SpacingItemDecoration(30)
-            var dataSource = data
-            cases = dataSource.getCases()
+            if (data != null) {
+                cases = data
+            }
             filteredCases = ArrayList(cases)
             addItemDecoration(topSpacingItemDecoration)
             layoutManager = LinearLayoutManager(activity)

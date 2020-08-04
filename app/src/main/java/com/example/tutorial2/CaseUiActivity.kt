@@ -32,6 +32,10 @@ class CaseUiActivity : AppCompatActivity() {
     }
 
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
     private fun setUpViewPager() {
         var viewPager = findViewById<ViewPager2>(R.id.view_pager)
         val pageAdapter = CaseUiPageAdapter(this)

@@ -19,7 +19,9 @@
         <activity android:name=".SearchUiActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".CaseUiActivity"
+        <activity android:name=".CaseUiActivity">
+        </activity>
+        <activity android:name=".AgentActivity"
             android:parentActivityName=".MainActivity">
         </activity>
     </application>

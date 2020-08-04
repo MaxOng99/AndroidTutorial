@@ -19,9 +19,7 @@ class PolicyOwner(
         parcel.readString(),
         parcel.readString(),
         parcel.readArrayList(LifeAssured::class.java.classLoader) as ArrayList<LifeAssured>?
-    ) {
-    }
-
+    )
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(nricNo)
@@ -54,5 +52,4 @@ class PolicyOwner(
             return arrayOfNulls(size)
         }
     }
-
 }

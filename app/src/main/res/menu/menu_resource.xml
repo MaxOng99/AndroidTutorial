@@ -4,6 +4,9 @@
     <item
         android:id="@+id/action_search_user"
         android:icon="@drawable/search_user_icon"
+        android:layout_height="24dp"
+        android:layout_width="24dp"
+        android:scaleType="fitXY"
         android:title="Search User"
         app:showAsAction="ifRoom" />
 </menu>

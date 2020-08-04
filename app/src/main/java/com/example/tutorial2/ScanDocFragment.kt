@@ -178,5 +178,4 @@ class ScanDocFragment : Fragment(), LifeAssuredRecyclerAdapter.OnLifeAssuredList
     override fun onLifeAssuredClick(position: Int) {
 
     }
-
 }

@@ -1,12 +1,14 @@
 package com.example.tutorial2.data
 
+import com.example.tutorial2.models.Agent
 import com.example.tutorial2.models.PolicyOwner
 
 class CasesDataSource {
 
     private var policyOwners: ArrayList<PolicyOwner> = ArrayList()
+    private var agents: ArrayList<Agent> = ArrayList()
 
-    private fun addCases(name:String, nricNo:String, policyNo:String, agent:String, process:String):PolicyOwner {
+    private fun addCases(name:String, nricNo:String, policyNo:String, agent: String?, process:String):PolicyOwner {
         val owner = PolicyOwner(name, nricNo, policyNo, agent, process, ArrayList())
         policyOwners.add(owner)
         return owner
@@ -20,9 +22,22 @@ class CasesDataSource {
         return policyOwners
     }
 
+    fun getAgents():ArrayList<Agent> {
+        return agents
+    }
+
+    fun populateAgent() {
+        for (x in 0..5) {
+            val agent = Agent("Joseph$x", "${x}579", ArrayList())
+            agents.add(agent)
+        }
+    }
+
     fun populateData() {
         for (x in 0..5) {
-            val owner = addCases("Alex Yeoh", "990920-10-9088", "TL2073123109", "Joseph", "Non-Financial Alteration")
+            val agent = agents[x]
+            val owner = addCases("Alex Yeoh$x", "990920-10-9088", "TL2073123109", agent.name, "Non-Financial Alteration")
+            agent.addOwners(owner)
             val assured1 = owner.addAssured("Doge")
             val assured2 = owner.addAssured("Cate")
 
@@ -64,7 +79,10 @@ class CasesDataSource {
                 "Success")
         }
 
-        val owner = addCases("martin", "990728-10-9999", "TL2073123109", "Joseph", "Non-Financial Alteration")
+        val agent = Agent("Chang Ying Ying", "801293", ArrayList())
+        val name = agent.name
+        val owner = addCases("martin", "990728-10-9999", "TL2073123109", name, "Non-Financial Alteration")
+        agent.addOwners(owner)
         val assured1 = owner.addAssured("Doge")
         val assured2 = owner.addAssured("Cate")
 
