@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/name"
-                android:src="@drawable/doge"/>
+                android:src="@drawable/profile"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
