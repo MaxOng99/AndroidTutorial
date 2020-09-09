@@ -38,8 +38,8 @@ class CasesDataSource {
             val agent = agents[x]
             val owner = addCases("Alex Yeoh$x", "990920-10-9088", "TL2073123109", agent.name, "Non-Financial Alteration")
             agent.addOwners(owner)
-            val assured1 = owner.addAssured("Doge")
-            val assured2 = owner.addAssured("Cate")
+            val assured1 = owner.addAssured("John")
+            val assured2 = owner.addAssured("Cassie")
 
             assured1.addForm("HLA Blood Profile 3 - Lipids Profile",
                 "Lorem ipsum dolor sit amet" +
@@ -83,8 +83,8 @@ class CasesDataSource {
         val name = agent.name
         val owner = addCases("martin", "990728-10-9999", "TL2073123109", name, "Non-Financial Alteration")
         agent.addOwners(owner)
-        val assured1 = owner.addAssured("Doge")
-        val assured2 = owner.addAssured("Cate")
+        val assured1 = owner.addAssured("Amanda")
+        val assured2 = owner.addAssured("Joseph")
 
         assured1.addForm("HLA Blood Profile 3 - Lipids Profile",
             "Lorem ipsum dolor sit amet" +
