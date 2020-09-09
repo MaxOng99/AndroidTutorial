@@ -9,6 +9,6 @@ The concepts covered throughout the development of this project include the foll
 * View-Model Mapping
 * Databse Connection with Realm
 
-![recording_1](media/recording_1.gif)
-![recording_2](media/recording_2.gif)
-![recording_3](media/recording_3.gif)
+![](https://media.giphy.com/media/S60JnTBOm187pb4RcT/giphy.gif)
+![](https://media.giphy.com/media/U8MqffLSn2d3DZG3KP/giphy.gif)
+![](https://media.giphy.com/media/KB6pVQJfLZaTxtthop/giphy.gif)
