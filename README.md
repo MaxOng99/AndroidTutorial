@@ -7,7 +7,7 @@ The concepts covered throughout the development of this project include the foll
 * Android Basics such as Activities, Lifecycles and frequently used View elements
 * UI layout and Design
 * View-Model Mapping
-* Databse Connection with Realm
+* Database Connection with Realm
 
 The recordings below provide a showcase of the android application developed, focusing more on the UI look and feel aspect:
 
